@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!--<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -33,4 +33,420 @@
     }
   </script>
 </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vedic Zodiac Calendar 2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3.5em;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .zodiac-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .zodiac-column {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .zodiac-column:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .column-header {
+            text-align: center;
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 15px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .rashis .column-header {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .adityas .column-header {
+            background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);
+        }
+
+        .vasus .column-header {
+            background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);
+        }
+
+        .zodiac-item {
+            background: white;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .zodiac-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .zodiac-item:hover::before {
+            left: 100%;
+        }
+
+        .zodiac-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .zodiac-name {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .zodiac-info {
+            font-size: 1em;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .rashis .zodiac-item {
+            border-left: 5px solid #11998e;
+        }
+
+        .adityas .zodiac-item {
+            border-left: 5px solid #ee0979;
+        }
+
+        .vasus .zodiac-item {
+            border-left: 5px solid #00d2ff;
+        }
+
+        .legend {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            width: 2px;
+            height: 2px;
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        @media (max-width: 1024px) {
+            .zodiac-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .legend {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✨ Vedic Divine Forces 2025 ✨</h1>
+            <p>Explore the cosmic alignment of Rudras, Adityas, and Vasus</p>
+        </div>
+
+        <div class="zodiac-grid">
+            <!-- 11 Rudras Column -->
+            <div class="zodiac-column rashis">
+                <div class="column-header">🔱 11 RUDRAS</div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Kalpa</div>
+                    <div class="zodiac-info">(Dissolution)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Vamadeva</div>
+                    <div class="zodiac-info">(Beauty)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Bhava</div>
+                    <div class="zodiac-info">(Existence)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Sadyojata</div>
+                    <div class="zodiac-info">(Birth)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Kapali</div>
+                    <div class="zodiac-info">(Ascetic)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Ahirbhudhnya</div>
+                    <div class="zodiac-info">(Depth)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Manyu</div>
+                    <div class="zodiac-info">(Wrath)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Mahadev</div>
+                    <div class="zodiac-info">(Divinity)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Shiva</div>
+                    <div class="zodiac-info">(Auspicious)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Ritam</div>
+                    <div class="zodiac-info">(Order)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Kaal</div>
+                    <div class="zodiac-info">(Time)</div>
+                </div>
+            </div>
+
+            <!-- 12 Adityas Column -->
+            <div class="zodiac-column adityas">
+                <div class="column-header">☀️ 12 ADITYAS</div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Dhata</div>
+                    <div class="zodiac-info">(Mar-Apr)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Aryaman</div>
+                    <div class="zodiac-info">(Apr-May)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Mitra</div>
+                    <div class="zodiac-info">(May-Jun)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Varuna</div>
+                    <div class="zodiac-info">(Jun-Jul)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Indra</div>
+                    <div class="zodiac-info">(Jul-Aug)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Vivasvan</div>
+                    <div class="zodiac-info">(Aug-Sep)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Pusha</div>
+                    <div class="zodiac-info">(Sep-Oct)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Parjanya</div>
+                    <div class="zodiac-info">(Oct-Nov)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Amshuman</div>
+                    <div class="zodiac-info">(Nov-Dec)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Bhaga</div>
+                    <div class="zodiac-info">(Dec-Jan)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Tvashtar</div>
+                    <div class="zodiac-info">(Jan-Feb)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Vishnu</div>
+                    <div class="zodiac-info">(Feb-Mar)</div>
+                </div>
+            </div>
+
+            <!-- 8 Vasus Column -->
+            <div class="zodiac-column vasus">
+                <div class="column-header">💎 8 VASUS</div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Dyaus</div>
+                    <div class="zodiac-info">(Sky)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Nakshatra</div>
+                    <div class="zodiac-info">(Stars)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Prithvi</div>
+                    <div class="zodiac-info">(Earth)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Varuna</div>
+                    <div class="zodiac-info">(Water)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Vayu</div>
+                    <div class="zodiac-info">(Wind)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Surya</div>
+                    <div class="zodiac-info">(Sun)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Agni</div>
+                    <div class="zodiac-info">(Fire)</div>
+                </div>
+                <div class="zodiac-item">
+                    <div class="zodiac-name">Chandra</div>
+                    <div class="zodiac-info">(Moon)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);"></div>
+                <span>11 Rudras (Forces of Life)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #ee0979 0%, #ff6a00 100%);"></div>
+                <span>12 Adityas (Solar Deities)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%);"></div>
+                <span>8 Vasus (Elemental Gods)</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add hover effects and interactions
+        const zodiacItems = document.querySelectorAll('.zodiac-item');
+        
+        zodiacItems.forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(1.1) rotate(2deg)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 300);
+            });
+        });
+
+        // Create twinkling stars in background
+        function createStars() {
+            const body = document.body;
+            for (let i = 0; i < 50; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                body.appendChild(star);
+            }
+        }
+
+        createStars();
+    </script>
+</body>
 </html>
+
