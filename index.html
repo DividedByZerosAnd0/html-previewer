@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Live HTML Previewer</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 24px; }
+    textarea { width: 100%; height: 180px; margin-bottom: 14px; font-family: 'Fira Mono', monospace; font-size: 1em; }
+    #output-frame { width: 100%; height: 240px; border: 1px solid #aaa; background: #fff; }
+    button { margin-top: 10px; }
+  </style>
+</head>
+<body>
+  <h2>Live HTML Editor and Previewer</h2>
+  <textarea id="source" placeholder="Type or paste your HTML code here..."></textarea>
+  <br>
+  <button onclick="showOutput()">Show Output</button>
+  <button onclick="openInNewTab()">Open as Link</button>
+  <h3>Output:</h3>
+  <iframe id="output-frame"></iframe>
+
+  <script>
+    function showOutput() {
+      let html = document.getElementById('source').value;
+      let frame = document.getElementById('output-frame');
+      frame.srcdoc = html;
+    }
+    function openInNewTab() {
+      let html = document.getElementById('source').value;
+      let blob = new Blob([html], {type: 'text/html'});
+      let url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+    }
+  </script>
+</body>
+</html>
